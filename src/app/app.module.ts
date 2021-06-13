@@ -2,21 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import swal from 'sweetalert';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddClientComponent } from './components/add-client/add-client.component';
-import { ListClientsComponent } from './components/list-clients/list-clients.component';
-import { InicioBlogComponent } from './components/inicio-blog/inicio-blog.component';
-import { BlogsComponent } from './components/blogs/blogs.component';
+import { ManageClientsComponent } from './components/manage-clients/manage-clients.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddClientComponent,
-    ListClientsComponent,
-    InicioBlogComponent,
-    BlogsComponent
+    ManageClientsComponent
   ],
   imports: [
     BrowserModule,

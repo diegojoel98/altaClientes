@@ -12,11 +12,11 @@ export class ClientService {
         this.groups = [
             {
                 group: 0,
-                name: 'Inactive'
+                name: 'Al corriente'
             },
             {
                 group: 1,
-                name: 'Active'
+                name: 'Con deudas'
             }
         ];
         this.clients = [];
@@ -24,7 +24,7 @@ export class ClientService {
     }
 
     getClients() {
-        return this.clients;        
+        return this.clients;
     }
 
     getClient() {
@@ -37,7 +37,7 @@ export class ClientService {
     }
 
     addClient(newClient) {
-       // this.clients[this.clients.length] = newClient;
+        // this.clients[this.clients.length] = newClient;
         this.clients.push(newClient);
     }
 

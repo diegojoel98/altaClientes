@@ -1,0 +1,57 @@
+<!-- Estructura manage-clients.component.html, la estructura inicial html está en el index.html-->
+<h1 class="text-center mt-3 mb-4">Gestión de clientes</h1>
+
+<!-- Estructura contenedora del html, se divide en dos columnas-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-6">
+            <!-- Primera columna, para añadir clientes -->
+            <h2 class="text-center mt-5 sticky-h2"><i class="fas fa-user-plus"></i> Añadir cliente</h2>
+            <form action="" #clientForm="ngForm" class="sticky-form">
+                <label for="name">
+                    Nombre: <input class="form-control"
+                        [ngClass]="{'border-success': name.valid, 'border-danger': !name.valid && name.touched}"
+                        title="Escribe tu nombre" type="text" #name="ngModel" [(ngModel)]="clientSelected.name"
+                        name="name" id="name" required="required">
+                </label><br>
+                <label for="group"> Grupo:
+                    <select id="group" #group="ngModel" [(ngModel)]="clientSelected.group" name="group">
+                        <option *ngFor="let group of groups" value={{group.group}}>{{group.name}}</option>
+                    </select>
+                </label><br>
+                <!--<input type="submit" value="Submit">-->
+                <button class="submit mt-3" (click)="sendClient()" [disabled]="!name.touched && !name.valid"
+                    [disabled]="clientForm.invalid">Guardar</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-6">
+            <!-- Segunda columna, para ver la lista de clientes -->
+            <h2 class="text-center mt-5"><i class="fas fa-list-ol"></i> Lista de Clientes</h2>
+            <br />
+            <div *ngIf="clientArray.length == 0" class="text-center font">
+                Todavía no hay clientes :(
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mx-auto">
+
+                        <div *ngIf="clientArray">
+                            <article *ngFor="let client of clientArray;index as i;">
+                                <ul>
+                                    <li> <b>Id:</b> {{i}} </li>
+                                    <li> <b>Nombre:</b> {{client.name}} </li>
+                                    <li> <b>Grupo:</b> {{client.group}} </li>
+                                </ul>
+                                <button class="btn btn-info p-1 mr-1" (click)="update(client)">Editar
+                                    cliente</button>
+                                <button class="btn btn-danger p-1" (click)="delete(client.id)">Borrar
+                                    cliente</button>
+                                <hr>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

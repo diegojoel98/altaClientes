@@ -1,28 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
-.header, .header-md {
-    width: auto;
-    height: 250px;
+body {
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #b4ebff, #9ed8ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #b4ebff, #9ed8ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.header-md {
-    height: 170px;
+h1, h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
 }
 
-.line-md {
-    line-height: 150px;
+/* Add client */
+label {
+    font-size: 1.2rem;
 }
 
-.line {
-    line-height: 220px;
+input {
+    display: block;
+    margin: 8px 0px;
 }
 
-.tama {
-    width: 150px;
-    height: 150px;
+input[type=text] {
+    border-radius: 7px;
+    display: block;
 }
 
-.bg-red {
-    background: #ED213A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+select {
+    border-radius: 4px;
+    padding: 3px;
+    cursor: pointer;
+    margin: 8px;
+}
+
+.submit {
+    border-radius: 4px;
+    padding: 8px;
+    font-weight: 600;
+    background-color: rgb(102, 236, 142);
+    border-bottom: 4px solid #2E7D32;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    font-size: 1.1rem;
+}
+
+.submit:hover {
+    color: rgb(45, 47, 49);
+}
+
+.submit:active {
+    background-color: rgb(41, 173, 81);
+}
+
+.fa-list-ol, .fa-user-plus {
+    color: rgb(41, 97, 41);
+}
+
+/* List clients */
+.list-client {
+    font-size: 1rem;
+    padding: 5px;
+}
+
+li {
+    list-style-type: none;
+    font-size: 1.1rem;
+}
+
+.font {
+    font-size: 1.1rem;
+}
+
+.sticky-h2, .sticky-form {
+    position: sticky;
+    top: 90px;
+}
+
+.sticky-form {
+    top: 160px;
+}
+
+@media (max-width: 347px) {
+    .sticky-h2 {
+        top: 40px;
+    }
 }
