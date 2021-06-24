@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Client, Group } from '../../models/client.models';
 import { ClientService } from '../../services/client.service';
 import swal from 'sweetalert'; // Import externo, librería sweetalert para crear alertas dinámicas
+// Import pdfmake-wrapper and the fonts to use
+import { PdfMakeWrapper, Txt } from 'pdfmake-wrapper';
+// configure pdf settings
+import * as pdfMake from 'pdfmake/build/pdfmake'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 
 @Component({
   selector: 'app-manage-clients',
@@ -87,10 +92,49 @@ export class ManageClientsComponent implements OnInit {
               swal("El cliente sigue aquí!");
             }
           });
-
-
       }
     }
+  }
+
+  /**
+   * Método generarPDF
+   * Acción que se ejecuta al darle click al botón generador de pdf, usando el paquete pdfmake-wrapper
+   */
+  generarPDF() {
+    const pdf = new PdfMakeWrapper();
+
+    pdf.add(
+      new Txt("Gestión de clientes").bold().fontSize(30).alignment('center').end
+    );
+
+    pdf.add(
+      new Txt(" ").end
+    );
+
+    pdf.info({
+      title: "Gestion de clientes " + new Date()
+    })
+
+    for (let i = 0; i < this.clientArray.length; i++) {
+      pdf.add(
+        new Txt("Nombre del cliente: ").end
+      );
+
+      pdf.add(
+        new Txt(this.clientArray[i].name).bold().fontSize(14).end
+      );
+
+      pdf.add(
+        new Txt("Grupo: " + this.clientArray[i].group).end
+      );
+
+      pdf.add(
+        new Txt(" ").end
+      );
+
+    }
+
+    pdf.create().open();
   }
 
 
